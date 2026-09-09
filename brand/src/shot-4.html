@@ -1,0 +1,47 @@
+<!doctype html><meta charset="utf-8"><title>4</title>
+<link rel="stylesheet" href="../../style.css"><link rel="stylesheet" href="shots.css">
+<div class="canvas">
+  <p class="eyebrow">How the check runs</p>
+  <h1>Public data, one listing at a time.</h1>
+  <p class="sub">No crawler, no database of ours. The extension asks the same public endpoints the
+    guarantors' own search boxes use.</p>
+
+  <div class="grid3">
+    <div class="tile">
+      <span class="num">1</span>
+      <h3>Reads the address</h3>
+      <p>Only on the listings that actually scroll into view. Nothing runs off screen.</p>
+      <span class="mono">212 East 45th Street</span>
+    </div>
+    <div class="tile">
+      <span class="num">2</span>
+      <h3>Normalises it</h3>
+      <p>Street→St, East→E, 45th→45. The street number anchors the match, so near-misses show as
+        “to confirm” instead of a false green.</p>
+      <span class="mono">212 E 45 St</span>
+    </div>
+    <div class="tile">
+      <span class="num">3</span>
+      <h3>Asks, then caches</h3>
+      <p>One request per listing you look at, cached locally for 24 hours. The verdict and its
+        reasoning are shown in full.</p>
+      <span class="mono">→ accepted · exact match</span>
+    </div>
+  </div>
+
+  <div class="note sourced">
+    <div class="marks">
+      <img class="ins" src="logos/insurent.png" alt="Insurent">
+      <img class="tg" src="logos/theguarantors.svg" alt="TheGuarantors">
+    </div>
+    <div class="rule"></div>
+    <p>Insurent's certified-building search and TheGuarantors' covered-building list are published by
+      those companies to attract tenants. Their own site remains the authority, so always confirm
+      with the landlord before committing.</p>
+  </div>
+
+  <div class="foot">
+    <span class="lock"><img src="mark.svg" alt="">Guarantor Checker for NYC Rentals</span>
+    <span>Not affiliated with StreetEasy, Zillow, Insurent or TheGuarantors.</span>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 362 200" preserveAspectRatio="xMidYMid slice">
+  <!-- chambre, lumiere du matin -->
+  <defs>
+    <linearGradient id="wB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFF1F3"/><stop offset="1" stop-color="#DDE2E6"/></linearGradient>
+    <linearGradient id="sB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6F0F5"/><stop offset="1" stop-color="#C2DAE8"/></linearGradient>
+    <linearGradient id="fB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CDB79D"/><stop offset="1" stop-color="#B49B7F"/></linearGradient>
+  </defs>
+  <rect width="362" height="200" fill="url(#wB)"/>
+  <path d="M40 28 L150 28 L196 200 L0 200 Z" fill="#ffffff" opacity=".32"/>
+  <rect y="146" width="362" height="54" fill="url(#fB)"/>
+  <rect x="46" y="32" width="104" height="96" rx="2" fill="url(#sB)"/>
+  <g fill="#FBFCFD"><rect x="95" y="32" width="6" height="96"/><rect x="46" y="74" width="104" height="6"/></g>
+  <rect x="42" y="28" width="112" height="104" rx="3" fill="none" stroke="#FBFCFD" stroke-width="7"/>
+  <g>
+    <rect x="200" y="56" width="140" height="50" rx="8" fill="#D3DBE0"/>
+    <rect x="192" y="98" width="158" height="36" rx="8" fill="#EFF2F4"/>
+    <rect x="206" y="86" width="50" height="22" rx="9" fill="#FFFFFF"/>
+    <rect x="262" y="86" width="50" height="22" rx="9" fill="#FFFFFF"/>
+    <rect x="192" y="116" width="158" height="18" rx="7" fill="#A9BAC3"/>
+    <rect x="198" y="134" width="9" height="12" rx="2" fill="#8A9AA3"/>
+    <rect x="335" y="134" width="9" height="12" rx="2" fill="#8A9AA3"/>
+  </g>
+  <g><rect x="166" y="118" width="24" height="28" rx="3" fill="#C7CDD2"/>
+     <circle cx="178" cy="109" r="9" fill="#F0E2C2"/></g>
+</svg>

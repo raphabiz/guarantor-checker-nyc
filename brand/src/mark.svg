@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Guarantor Checker for NYC Rentals — marque principale (>= 32 px) -->
+  <defs>
+    <linearGradient id="field" x1="0" y1="0" x2=".85" y2="1">
+      <stop offset="0" stop-color="#1aa87c"/><stop offset="1" stop-color="#095339"/>
+    </linearGradient>
+    <clipPath id="frame"><rect width="128" height="128" rx="29"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="128" height="128" fill="url(#field)"/>
+    <g fill="#ffffff">
+      <rect x="50" y="14" width="4" height="14" rx="2"/>
+      <path d="M42 28 H62 V52 H70 V80 H78 V128 H26 V80 H34 V52 H42 Z"/>
+    </g>
+    <g fill="#0a5c43" opacity=".55">
+      <rect x="45.5" y="34" width="4.5" height="12" rx="2.25"/>
+      <rect x="54" y="34" width="4.5" height="12" rx="2.25"/>
+      <rect x="37.75" y="59" width="5.5" height="15" rx="2.75"/>
+      <rect x="49.25" y="59" width="5.5" height="15" rx="2.75"/>
+      <rect x="60.75" y="59" width="5.5" height="15" rx="2.75"/>
+      <rect x="34.5" y="88" width="7" height="18" rx="3.5"/>
+      <rect x="48.5" y="88" width="7" height="18" rx="3.5"/>
+      <rect x="62.5" y="88" width="7" height="18" rx="3.5"/>
+      <rect x="34.5" y="113" width="7" height="18" rx="3.5"/>
+      <rect x="48.5" y="113" width="7" height="18" rx="3.5"/>
+      <rect x="62.5" y="113" width="7" height="18" rx="3.5"/>
+    </g>
+    <circle cx="97" cy="97" r="19" fill="#ffffff" stroke="#0a5c43" stroke-width="7"/>
+    <path d="M88.5 97.5 L94.5 103.5 L106 91" fill="none" stroke="#0e7a59" stroke-width="7.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

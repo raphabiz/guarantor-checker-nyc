@@ -1,0 +1,40 @@
+<!doctype html><meta charset="utf-8"><title>5</title>
+<link rel="stylesheet" href="../../style.css"><link rel="stylesheet" href="shots.css">
+<style>/* titre sur deux lignes : on resserre pour garder le pied libre */
+  .grid3 { margin-top: 34px; } .tile { min-height: 246px; }</style>
+<div class="canvas dark">
+  <p class="eyebrow">Privacy</p>
+  <h1>Nothing about you<br>leaves your browser.</h1>
+  <p class="sub">No account, no sign-up, no analytics, no server of ours. The only thing that
+    goes out is a building address, to the guarantor's own public search.</p>
+
+  <div class="grid3">
+    <div class="tile">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+      <h3>One permission</h3>
+      <p>It caches a public list of covered buildings for 24 hours. No data about you is ever
+        written to it.</p>
+      <span class="mono">storage</span>
+    </div>
+    <div class="tile">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg></span>
+      <h3>Three domains</h3>
+      <p>The listing page you are on, and the two guarantors it queries. No fourth domain is ever
+        contacted.</p>
+    </div>
+    <div class="tile">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.6 5.1A9.6 9.6 0 0 1 12 5c5 0 9 4.5 9 7a11 11 0 0 1-2.3 3.6M6.3 6.4C3.9 8 2 10.4 2 12c0 2.5 4 7 10 7 1.7 0 3.2-.4 4.5-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></span>
+      <h3>Nothing about you</h3>
+      <p>No name, no email, no account, no browsing history. Nothing about you is stored or sent,
+        so there is nothing to sell or leak.</p>
+    </div>
+  </div>
+
+  <div class="codeblock"><span class="k">"permissions"</span>: ["storage"],
+<span class="k">"host_permissions"</span>: ["streeteasy.com", "insurent.com", "theguarantors.com"]</div>
+
+  <div class="foot">
+    <span class="lock"><img src="mark.svg" alt="">Guarantor Checker for NYC Rentals</span>
+    <span>Not affiliated with StreetEasy, Zillow, Insurent or TheGuarantors.</span>
+  </div>
+</div>

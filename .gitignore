@@ -1,0 +1,16 @@
+# Paquet construit par `node pack.mjs`
+dist/
+*.zip
+
+# jsdom, installe a la main pour les tests
+node_modules/
+test/node_modules/
+
+# Systeme
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# brand/ et store/ sont versionnes volontairement : ce sont les sources de la
+# marque et les images deposees sur le Store. C'est pack.mjs qui les tient hors
+# du zip envoye a Google, pas ce fichier.

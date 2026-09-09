@@ -1,0 +1,311 @@
+/**
+ * Design system des visuels du Chrome Web Store.
+ *
+ * Memes jetons que le produit (pages.css / style.css) : un seul vert, la
+ * couleur reservee aux etats, jamais de fond colore derriere une liste.
+ * Les gabarits importent en plus le vrai style.css pour que les pastilles
+ * affichees soient rigoureusement celles injectees dans les pages.
+ */
+
+:root {
+  --ink: #16191d;
+  --soft: #5b6570;
+  --line: #e0e4e8;
+  --surface: #ffffff;
+  --bg: #f6f7f8;
+  --green: #0f7b5a;
+  --green-2: #2aa37a;
+  --green-9: #095339;
+  --green-soft: rgba(15, 123, 90, 0.09);
+  --amber: #a8710a;
+  --red: #b23b3b;
+  --grey: #6b7280;
+  --font: "Segoe UI Variable Display", "Segoe UI", -apple-system, Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  width: 1280px;
+  height: 800px;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.5 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* voile vert tres doux, coin haut droit : donne une profondeur sans salir */
+.canvas {
+  position: relative;
+  width: 1280px;
+  height: 800px;
+  padding: 68px 72px 0;
+  background:
+    radial-gradient(760px 520px at 100% -12%, rgba(42, 163, 122, 0.16), transparent 70%),
+    radial-gradient(520px 420px at -8% 108%, rgba(15, 123, 90, 0.09), transparent 70%);
+}
+.canvas.dark {
+  background:
+    radial-gradient(900px 620px at 108% -10%, #17936c, transparent 68%),
+    linear-gradient(155deg, #0f7b5a, #06412e 78%);
+  color: #fff;
+}
+
+/* ---------------- en-tete ---------------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 0 0 16px;
+  color: var(--green);
+  font-size: 14px; font-weight: 650; letter-spacing: 0.09em; text-transform: uppercase;
+}
+.eyebrow::before {
+  content: ""; width: 22px; height: 2px; border-radius: 1px; background: var(--green);
+}
+.dark .eyebrow { color: rgba(255, 255, 255, 0.82); }
+.dark .eyebrow::before { background: rgba(255, 255, 255, 0.6); }
+
+h1 {
+  margin: 0 0 14px;
+  max-width: 900px;
+  font-size: 46px; line-height: 1.1; font-weight: 700; letter-spacing: -0.025em;
+}
+.sub {
+  margin: 0;
+  max-width: 780px;
+  color: var(--soft);
+  font-size: 19px; line-height: 1.5;
+}
+.dark .sub { color: rgba(255, 255, 255, 0.78); }
+
+/* ---------------- pied ---------------- */
+.foot {
+  position: absolute; left: 72px; right: 72px; bottom: 26px;
+  display: flex; align-items: center; justify-content: space-between;
+  color: #90999f; font-size: 12.5px;
+}
+.foot .lock { display: flex; align-items: center; gap: 9px; color: var(--soft); font-weight: 600; }
+.foot .lock img { width: 22px; height: 22px; border-radius: 6px; }
+.dark .foot { color: rgba(255, 255, 255, 0.55); }
+.dark .foot .lock { color: rgba(255, 255, 255, 0.9); }
+
+/* ---------------- fiche annonce simulee ---------------- */
+.stage { margin-top: 20px; display: flex; gap: 25px; }
+
+.card {
+  width: 362px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 18px 40px -18px rgba(16, 24, 40, 0.28);
+  overflow: hidden;
+}
+
+/* Illustration, jamais une photographie : une annonce de demonstration ne doit
+   pas pouvoir passer pour une vraie annonce en circulation. */
+.photo { position: relative; height: 176px; background: #e8eaec; }
+.photo img { display: block; width: 100%; height: 176px; object-fit: cover; }
+.photo .tag {
+  position: absolute; left: 12px; top: 12px;
+  padding: 4px 9px; border-radius: 5px;
+  background: rgba(22, 25, 29, .78); color: #fff;
+  font-size: 10.5px; font-weight: 700; letter-spacing: .07em;
+}
+.photo .fav {
+  position: absolute; right: 12px; top: 11px;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, .9); color: #4a5560; font-size: 15px;
+  box-shadow: 0 1px 3px rgba(16, 24, 40, .2);
+}
+.photo .count {
+  position: absolute; right: 12px; bottom: 12px;
+  padding: 3px 8px; border-radius: 5px;
+  background: rgba(22, 25, 29, .6); color: #fff;
+  font-size: 10.5px; font-variant-numeric: tabular-nums;
+}
+
+.cbody { padding: 13px 15px 13px; }
+.price { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; }
+.price i { font-style: normal; font-size: 13.5px; font-weight: 500; color: var(--soft); }
+.specs { margin-top: 3px; color: var(--soft); font-size: 13.5px; }
+.addr { margin-top: 8px; font-size: 15px; font-weight: 650; letter-spacing: -0.01em; }
+.hood { margin-top: 2px; color: var(--soft); font-size: 13px; }
+.by {
+  margin-top: 11px; padding-top: 9px; border-top: 1px solid var(--line);
+  color: #8a939c; font-size: 11.5px;
+}
+.cbody .seg-badge-wrap { margin: 11px 0 0; }
+
+/* ---------------- blocs de contenu ---------------- */
+.grid3 { margin-top: 50px; display: flex; gap: 22px; }
+.tile {
+  flex: 1;
+  min-height: 296px;
+  padding: 26px 26px 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 14px 34px -20px rgba(16, 24, 40, 0.25);
+}
+.tile h3 { margin: 16px 0 8px; font-size: 20px; font-weight: 650; letter-spacing: -0.015em; }
+.tile p { margin: 0; color: var(--soft); font-size: 16px; line-height: 1.6; }
+.tile .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 9px;
+  background: var(--green-soft); color: var(--green);
+  font-size: 15px; font-weight: 700;
+}
+.dark .tile {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: none;
+}
+.dark .tile h3 { color: #fff; }
+.dark .tile p { color: rgba(255, 255, 255, 0.76); }
+.dark .tile .num { background: rgba(255, 255, 255, 0.16); color: #fff; }
+
+/* ------------------------------------------------------------------
+   Le rendu headless suit le theme du systeme. Les visuels du Store sont
+   toujours en clair : on re-affirme ici les valeurs claires de style.css.
+   ------------------------------------------------------------------ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --seg-ok: #0f7b5a; --seg-warn: #a8710a; --seg-no: #b23b3b; --seg-muted: #6b7280;
+  }
+  .seg-badge {
+    color: #1f2937; background: #ffffff; border-color: #e3e6ea;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.06);
+  }
+  #seg-pop { background: #ffffff; color: #1a1a1a; border-color: #d0d0d0; }
+}
+
+/* ---------------- mise en scene du popover et du popup ---------------- */
+.duo { margin-top: 26px; display: flex; gap: 64px; align-items: flex-start; }
+
+.zoom { transform-origin: top left; }
+.zoom-135 { transform: scale(1.16); }
+.zoom-14  { transform: scale(1.4); }
+
+.popstage { position: relative; }
+.popstage #seg-pop { position: static; }
+
+/* replique du popup de l'extension (memes regles que pages.css) */
+.popup {
+  width: 320px; padding: 16px 16px 14px;
+  background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(16,24,40,.06), 0 22px 48px -20px rgba(16,24,40,.3);
+  font: 14px/1.55 var(--font); color: var(--ink);
+}
+.popup .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.popup .head img { width: 28px; height: 28px; border-radius: 7px; }
+.popup h1 { font-size: 17px; font-weight: 650; margin: 0; letter-spacing: -0.01em; }
+.popup .hint { color: var(--soft); font-size: 12.5px; margin: 0; }
+.popup h2 { font-size: 14px; font-weight: 650; margin: 14px 0 8px; }
+.popup .legend-item { display: flex; gap: 9px; align-items: flex-start; padding: 5px 0; }
+.popup .dot { flex: none; width: 9px; height: 9px; margin-top: 5px; border-radius: 50%; }
+.popup .dot-ok { background: var(--green); }
+.popup .dot-warn { background: #b8860b; }
+.popup .dot-no { background: var(--red); }
+.popup .dot-unknown { background: var(--grey); }
+.popup .txt { font-size: 12.5px; line-height: 1.45; }
+.popup .txt b { display: block; font-size: 12px; font-weight: 650; }
+.popup .txt span { color: var(--soft); }
+.popup .tip {
+  margin: 12px 0 0; padding: 10px 12px; background: var(--green-soft);
+  border-radius: 8px; font-size: 12.5px;
+}
+.popup .disclaimer {
+  margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--line);
+  color: var(--soft); font-size: 11px; line-height: 1.45;
+}
+
+/* liste d'etats commentee */
+.states { flex: 1; display: flex; flex-direction: column; justify-content: space-between; min-height: 470px; }
+.state-row { display: flex; align-items: center; gap: 18px; padding: 27px 0; border-top: 1px solid var(--line); }
+.state-row:first-child { border-top: 0; padding-top: 0; }
+.state-row .lab { flex: 0 0 232px; }
+.state-row p { margin: 0; color: var(--soft); font-size: 16.5px; line-height: 1.45; }
+
+/* etape numerotee avec exemple monospace */
+.mono {
+  display: inline-block; margin-top: 10px; padding: 6px 10px;
+  background: #f0f2f4; border: 1px solid var(--line); border-radius: 7px;
+  font: 13px/1.4 ui-monospace, Consolas, monospace; color: #374151;
+}
+.dark .mono { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.2); color: #eafff5; }
+.note {
+  margin-top: 32px; padding: 18px 22px;
+  background: var(--green-soft); border-left: 3px solid var(--green); border-radius: 8px;
+  font-size: 16.5px; line-height: 1.55; color: #14603f;
+}
+
+/* pastille d'icone des tuiles : un pictogramme, pas un glyphe typographique */
+.tile .ico {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--green-soft); color: var(--green);
+}
+.dark .tile .ico { background: rgba(255,255,255,.16); color: #fff; }
+.tile .ico svg { width: 20px; height: 20px; }
+.tile .mono { margin-top: 14px; }
+
+/* bloc de code pleine largeur (extrait de manifest) */
+.codeblock {
+  margin-top: 30px; padding: 18px 22px;
+  background: rgba(0, 0, 0, .24);
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 12px;
+  font: 15px/1.85 ui-monospace, Consolas, monospace;
+  color: rgba(255, 255, 255, .92);
+  white-space: pre;
+}
+.codeblock .k { color: #9fe8c9; }
+
+/* ------------------------------------------------------------------
+   Marques des deux garants verifies.
+
+   Usage nominatif : on nomme les services interroges, on ne se reclame
+   d'aucun lien avec eux. Les logos sont donc toujours poses sur une
+   surface blanche a eux, jamais recolores ni integres a notre marque,
+   et toujours accompagnes de la mention de non-affiliation du pied.
+   Fichiers officiels, non retouches (voir logos/README.md).
+   ------------------------------------------------------------------ */
+.brands {
+  display: inline-flex; flex-direction: column; gap: 16px;
+  padding: 18px 24px 20px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 14px 34px -20px rgba(16, 24, 40, .28);
+}
+.brands .lab {
+  color: var(--soft);
+  font-size: 11.5px; font-weight: 650; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.brands img { display: block; }
+.brands .ins { height: 40px; }   /* bloc sur deux lignes */
+.brands .tg  { height: 17px; }   /* logotype sur une ligne : cale optiquement */
+
+/* en bandeau horizontal */
+.brands.row { flex-direction: row; align-items: center; gap: 26px; padding: 14px 24px; }
+.brands.row .lab { padding-right: 2px; }
+.brands.row .rule { width: 1px; height: 30px; background: var(--line); }
+
+/* epingle en haut a droite d'une planche */
+.brands.pin { position: absolute; right: 72px; top: 80px; }
+
+/* note de source cohabitant avec les deux logotypes */
+.note.sourced {
+  display: flex; align-items: center; gap: 28px;
+  background: #ffffff; border-left-color: var(--green);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 14px 34px -22px rgba(16, 24, 40, .22);
+}
+.note.sourced .marks { flex: 0 0 auto; display: flex; flex-direction: column; gap: 13px; }
+.note.sourced .marks img { display: block; }
+.note.sourced .marks .ins { height: 34px; }
+.note.sourced .marks .tg { height: 15px; }
+.note.sourced .rule { flex: 0 0 1px; align-self: stretch; background: var(--line); }
+.note.sourced p { margin: 0; }

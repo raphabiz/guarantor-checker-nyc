@@ -1,0 +1,58 @@
+Renting in New York without a US credit history means the same question comes up on every listing: will this building take an institutional guarantor?
+
+Guarantor Checker answers it where the question is asked, on the listing itself.
+
+
+WHAT YOU SEE
+
+Two small badges are added to each rental listing on streeteasy.com, one for Insurent and one for TheGuarantors. Each shows a coloured dot and its state in a single word:
+
+• accepted: the building is on that guarantor's published list.
+• to confirm: same street number, different street name. Worth a manual check.
+• not listed: the address is not on their list. The landlord may still accept another guarantor, so it is worth asking.
+• not verified: the check did not complete. The badge opens the official search instead.
+
+Colour sits on the dot and the state word only, never on the background. Twenty listings deep, a results page still reads like a results page.
+
+
+ONE CLICK TELLS YOU WHY
+
+Clicking a badge opens the reasoning behind the verdict: the address read from the listing, the query actually sent, what came back, how the two were compared, and the source. Two buttons let you copy the address and open the guarantor's own search with it.
+
+No verdict is shown without its evidence. When a match is uncertain, the badge says "to confirm" rather than guessing green. Street numbers anchor every comparison, so a different building on the same street will not pass as a match.
+
+
+HOW THE CHECK RUNS
+
+Insurent publishes the buildings it certifies, and TheGuarantors publishes the buildings it covers in New York and New Jersey. Both lists exist so that tenants can find them. This extension reads them, nothing more.
+
+• Only listings that actually scroll into view are checked. Nothing runs off screen, and there is no bulk crawling.
+• Addresses are normalised before comparison: Street becomes St, East becomes E, 45th becomes 45.
+• Verdicts are cached for 24 hours, so the same building is never checked twice, and TheGuarantors' list is downloaded at most once a day.
+
+
+WHAT IT DOES NOT DO
+
+It does not contact agents, fill in forms, or click anything on your behalf. It does not rank, score, or hide listings. It adds two badges and explains them.
+
+It is also not an approval. Coverage lists change, and each guarantor still has its own income and eligibility requirements. Always confirm with the landlord or the broker before committing, and treat the guarantors' own sites as the authority.
+
+
+PRIVACY
+
+There is no account, no sign-up, no analytics, and no server of ours. Nothing about you is collected.
+
+• One permission, storage. It holds a cached copy of TheGuarantors' public list of covered buildings, refreshed once a day. Nothing about you is ever written to it.
+• Three domains: the listing page you are on, and the two guarantors it queries. No fourth domain is ever contacted.
+• The only thing that leaves your browser is a building address, sent to the guarantor's own public search. It is the same request you would make by typing that address into their website yourself.
+• No name, no email, no account, no browsing history. Nothing about you is stored or sent, so there is nothing to sell or leak.
+
+
+LANGUAGES
+
+English, French, Spanish, Portuguese (Brazil) and Simplified Chinese. The interface follows your browser language and falls back to English.
+
+
+NOT AFFILIATED
+
+This extension is an independent project. It is not affiliated with, endorsed by, or connected to StreetEasy, Zillow, Insurent, MRI Software or TheGuarantors. All trademarks belong to their respective owners.

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Guarantor Checker — master allégé : même silhouette, détails retirés, rendu 16 px -->
+  <defs><clipPath id="frame16"><rect width="128" height="128" rx="27"/></clipPath></defs>
+  <g clip-path="url(#frame16)">
+    <rect width="128" height="128" fill="#0f7b5a"/>
+    <g fill="#ffffff">
+      <path d="M40 26 H64 V54 H72 V84 H80 V128 H22 V84 H30 V54 H40 Z"/>
+    </g>
+    <g fill="#0f7b5a">
+      <rect x="30" y="96" width="10" height="24" rx="4"/>
+      <rect x="46" y="96" width="10" height="24" rx="4"/>
+      <rect x="62" y="96" width="10" height="24" rx="4"/>
+    </g>
+    <circle cx="99" cy="98" r="23" fill="#ffffff" stroke="#0f7b5a" stroke-width="9"/>
+    <path d="M89 98.5 L96.5 106 L109.5 91" fill="none" stroke="#0f7b5a" stroke-width="10"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

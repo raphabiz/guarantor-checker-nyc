@@ -1,0 +1,206 @@
+/**
+ * Styles partages des pages d'extension (popup.html et options.html).
+ *
+ * Un seul jeu de variables pour les deux pages : ce qui change entre le popup
+ * (300 px de large) et la page de reglages (une vraie page), c'est la mise en
+ * page, pas les couleurs ni les composants.
+ *
+ * Le theme suit celui du systeme (prefers-color-scheme). Toutes les couleurs
+ * passent par une variable pour qu'un seul bloc suffise a basculer en sombre.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --surface-2: #f0f2f4;
+  --text: #16191d;
+  --text-soft: #5b6570;
+  --border: #e0e4e8;
+
+  --accent: #0f7b5a;
+  --accent-soft: rgba(15, 123, 90, 0.1);
+  --accent-text: #ffffff;
+
+  --ok: #0f7b5a;
+  --warn: #b8860b;
+  --danger: #b23b3b;
+  --muted: #6b7280;
+
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 4px 12px rgba(16, 24, 40, 0.05);
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    "Noto Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131518;
+    --surface: #1c1f24;
+    --surface-2: #24282e;
+    --text: #e9ecef;
+    --text-soft: #9aa4ae;
+    --border: #2f343b;
+
+    --accent: #2aa37a;
+    --accent-soft: rgba(42, 163, 122, 0.14);
+    --accent-text: #08120e;
+
+    --ok: #2aa37a;
+    --warn: #d9a441;
+    --danger: #d76a6a;
+    --muted: #8b95a1;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 14px rgba(0, 0, 0, 0.3);
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.55 var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 { font-size: 17px; font-weight: 650; margin: 0; letter-spacing: -0.01em; }
+h2 { font-size: 14px; font-weight: 650; margin: 0 0 2px; letter-spacing: -0.005em; }
+
+p { margin: 0; }
+
+a { color: var(--accent); }
+
+.hint { color: var(--text-soft); font-size: 12.5px; }
+
+code {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+/* ================= carte ================= */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+}
+
+/* ================= champs ================= */
+
+label { display: block; font-size: 12px; font-weight: 600; color: var(--text-soft); margin: 0 0 5px; }
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"],
+input[type="date"], input[type="time"], select, textarea {
+  width: 100%;
+  padding: 9px 11px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+textarea {
+  min-height: 240px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.field { flex: 1 1 220px; min-width: 0; }
+.row { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.chk {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text);
+  margin: 0;
+  padding: 7px 0;
+  cursor: pointer;
+}
+.chk input { width: auto; margin: 2px 0 0; accent-color: var(--accent); flex: none; }
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  padding: 6px 14px 10px;
+  margin: 0;
+}
+legend { font-size: 12px; font-weight: 600; color: var(--text-soft); padding: 0 6px; }
+
+/* ================= boutons ================= */
+
+button {
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--accent-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s ease, background 0.15s ease;
+}
+button:hover { filter: brightness(1.07); }
+button:active { filter: brightness(0.95); }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+button.sec {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+button.sec:hover { background: var(--surface-2); }
+
+/* ================= pastilles d'etat ================= */
+
+.dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-top: 6px;
+  background: var(--muted);
+}
+.dot-ok { background: var(--ok); }
+.dot-warn { background: var(--warn); }
+.dot-no { background: var(--danger); }
+.dot-unknown { background: var(--muted); }
+
+/* ================= bandeau d'avertissement ================= */
+
+.notice {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border: 1px solid color-mix(in srgb, var(--warn) 45%, transparent);
+  background: color-mix(in srgb, var(--warn) 10%, transparent);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+  font-size: 12.5px;
+}
+.notice::before { content: "!"; font-weight: 700; color: var(--warn); flex: none; }

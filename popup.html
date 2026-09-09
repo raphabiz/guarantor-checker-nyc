@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title data-i18n="extName">Guarantor Checker</title>
+  <link rel="stylesheet" href="pages.css" />
+  <style>
+    body { width: 320px; padding: 16px 16px 14px; background: var(--surface); }
+
+    .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .head img { width: 28px; height: 28px; border-radius: 7px; }
+
+    .legend { margin: 14px 0 0; }
+    .legend h2 { margin-bottom: 8px; }
+    .legend-item { display: flex; gap: 9px; align-items: flex-start; padding: 5px 0; }
+    .legend-item .txt { font-size: 12.5px; line-height: 1.45; }
+    .legend-item .txt b { display: block; font-size: 12px; font-weight: 650; }
+    .legend-item .txt span { color: var(--text-soft); }
+
+    .tip {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: var(--accent-soft);
+      border-radius: var(--radius-sm);
+      font-size: 12.5px;
+    }
+
+    #options { width: 100%; margin-top: 14px; }
+
+    .foot {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      color: var(--text-soft);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+  <div class="head">
+    <img src="icons/icon48.png" alt="" />
+    <h1 data-i18n="extName">Guarantor Checker</h1>
+  </div>
+
+  <p class="hint" data-i18n="popupTagline"></p>
+
+  <div class="legend">
+    <h2 data-i18n="popupLegendTitle"></h2>
+
+    <div class="legend-item">
+      <span class="dot dot-ok"></span>
+      <span class="txt"><b data-i18n="statusAccepted"></b><span data-i18n="legendAccepted"></span></span>
+    </div>
+    <div class="legend-item">
+      <span class="dot dot-warn"></span>
+      <span class="txt"><b data-i18n="statusToConfirm"></b><span data-i18n="legendToConfirm"></span></span>
+    </div>
+    <div class="legend-item">
+      <span class="dot dot-no"></span>
+      <span class="txt"><b data-i18n="statusNotListed"></b><span data-i18n="legendNotListed"></span></span>
+    </div>
+    <div class="legend-item">
+      <span class="dot dot-unknown"></span>
+      <span class="txt"><b data-i18n="statusUnknown"></b><span data-i18n="legendUnknown"></span></span>
+    </div>
+  </div>
+
+  <p class="tip" data-i18n="popupTip"></p>
+
+  <!-- [DESACTIVE] La page de reglages ne sert qu'a la file de demandes de
+       visite : tant que celle-ci est eteinte, elle n'est plus declaree dans
+       le manifest ni accessible d'ici.
+  <button id="options" data-i18n="popupSettings"></button>
+  -->
+
+  <p class="foot" data-i18n="popupDisclaimer"></p>
+
+  <!-- [DESACTIVE] etat de la file de demandes de visite :
+  <div class="stat"><span>File de visites</span><b id="queue">—</b></div>
+  <div class="stat"><span>Annonces contactees</span><b id="sent">—</b></div>
+  <p class="warn" id="warn" hidden>Profil incomplet : ajoute ton nom et ton email.</p>
+  <button id="resume" class="sec" hidden>Reprendre la file</button>
+  <button id="clearQueue" class="sec" hidden>Vider la file</button>
+  -->
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!doctype html><meta charset="utf-8"><title>icon</title>
+<style>html,body{margin:0;background:transparent}img{display:block}</style>
+<img id="i" src="mark.svg" alt="">
+<script>
+  const p = new URLSearchParams(location.search);
+  const el = document.getElementById("i");
+  el.src = p.get("src") || "mark.svg";
+  el.width = el.height = Number(p.get("size") || 128);
+  document.documentElement.style.width = document.body.style.width = el.width + "px";
+  document.documentElement.style.height = document.body.style.height = el.width + "px";
+</script>

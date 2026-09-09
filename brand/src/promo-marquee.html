@@ -1,0 +1,56 @@
+<!doctype html><meta charset="utf-8"><title>promo marquee</title>
+<link rel="stylesheet" href="../../style.css">
+<style>
+ @import url("shots.css");
+ body { width: 1400px; height: 560px; }
+ .m {
+   width: 1400px; height: 560px; padding: 0 76px;
+   display: flex; align-items: center; gap: 76px;
+   background:
+     radial-gradient(900px 620px at 106% -18%, #1bab7e, transparent 64%),
+     linear-gradient(150deg, #128a65, #06412e 80%);
+   color: #fff; font-family: var(--font);
+ }
+ .left { flex: 1 1 auto; }
+ .lock2 { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+ .lock2 img { width: 62px; height: 62px; border-radius: 15px; box-shadow: 0 8px 22px rgba(0,0,0,.3); }
+ .lock2 b { font-size: 26px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; display: block; }
+ .lock2 i { font-style: normal; font-size: 26px; font-weight: 400; letter-spacing: -0.02em; color: rgba(255,255,255,.66); }
+ .m h2 { margin: 0 0 18px; font-size: 47px; line-height: 1.12; font-weight: 700; letter-spacing: -0.03em; }
+ .m p { margin: 0; font-size: 20px; line-height: 1.5; color: rgba(255,255,255,.82); max-width: 620px; }
+ .right { flex: 0 0 380px; }
+ .right .card { width: 380px; box-shadow: 0 34px 70px -22px rgba(0,0,0,.55); border-color: rgba(255,255,255,.2); }
+</style>
+<div class="m">
+  <div class="left">
+    <div class="lock2"><img src="mark.svg" alt="">
+      <span><b>Guarantor Checker</b><i>for NYC Rentals</i></span></div>
+    <h2>The guarantor answer,<br>right on the listing.</h2>
+    <p>Insurent and TheGuarantors, checked live against the buildings each one publicly
+      says it covers, before you write to a single agent.</p>
+    <div class="brands row" style="margin-top:30px">
+      <span class="lab">Checked against</span>
+      <img class="ins" src="logos/insurent.png" alt="Insurent">
+      <span class="rule"></span>
+      <img class="tg" src="logos/theguarantors.svg" alt="TheGuarantors">
+    </div>
+  </div>
+  <div class="right">
+    <div class="card">
+      <div class="photo"><img src="photos/a.svg" alt="">
+        <span class="tag">NO FEE</span><span class="fav">&#9825;</span><span class="count">1 / 14</span>
+      </div>
+      <div class="cbody">
+        <div class="price">$3,850<i>/month</i></div>
+        <div class="specs">2 beds &middot; 1 bath &middot; 850 ft&sup2;</div>
+        <div class="addr">212 East 45th Street #12B</div>
+        <div class="hood">Midtown East, Manhattan</div>
+        <div class="seg-badge-wrap">
+          <button class="seg-badge seg-ok"><span class="seg-dot"></span><span class="seg-brand">Insurent</span><span class="seg-state">accepted</span></button>
+          <button class="seg-badge seg-ok"><span class="seg-dot"></span><span class="seg-brand">TheGuarantors</span><span class="seg-state">accepted</span></button>
+        </div>
+        <div class="by">Listed by Marlow &amp; Finch Real Estate</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!-- [DESACTIVE] Page non declaree dans le manifest tant que la file de
+     demandes de visite est eteinte. Voir l'en-tete de options.js. -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title data-i18n="optTitle">Guarantor Checker</title>
+  <link rel="stylesheet" href="pages.css" />
+  <style>
+    body { padding: 28px 20px 110px; }
+    .wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 18px; }
+
+    .page-head { display: flex; align-items: center; gap: 12px; }
+    .page-head img { width: 34px; height: 34px; border-radius: 8px; }
+    .page-head h1 { font-size: 20px; }
+
+    .card > h2 { margin-bottom: 4px; }
+    .card > .hint { margin-bottom: 12px; }
+    .stack { display: flex; flex-direction: column; gap: 14px; }
+
+    /* grille de disponibilites */
+    table#availGrid { border-collapse: separate; border-spacing: 0; width: 100%; }
+    #availGrid th, #availGrid td {
+      border-bottom: 1px solid var(--border);
+      padding: 8px 10px;
+      text-align: center;
+      font-size: 12.5px;
+    }
+    #availGrid th { color: var(--text-soft); font-weight: 600; }
+    #availGrid th:first-child, #availGrid td:first-child { text-align: left; font-weight: 600; }
+    #availGrid input { width: auto; accent-color: var(--accent); }
+    #availGrid td.on { background: var(--accent-soft); }
+    #availGrid .ny { display: block; font-size: 10.5px; color: var(--text-soft); font-weight: 400; margin-top: 2px; }
+
+    pre#preview {
+      white-space: pre-wrap;
+      margin: 0;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      font: 12.5px/1.65 var(--mono);
+      max-height: 340px;
+      overflow: auto;
+    }
+
+    .bar {
+      position: sticky;
+      bottom: 0;
+      margin: 0 -20px -110px;
+      padding: 14px 20px;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .bar-inner { max-width: 760px; margin: 0 auto; width: 100%; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    #status { font-size: 13px; font-weight: 600; color: var(--ok); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="page-head">
+      <img src="icons/icon48.png" alt="" />
+      <div>
+        <h1 data-i18n="optTitle"></h1>
+        <p class="hint" data-i18n="optIntro"></p>
+      </div>
+    </div>
+
+    <div class="notice" data-i18n="optNoticeDisabled"></div>
+
+    <!-- ================= profil ================= -->
+    <section class="card stack">
+      <h2 data-i18n="secProfile"></h2>
+      <div class="row">
+        <div class="field"><label for="name" data-i18n="fName"></label><input id="name" type="text" placeholder="Jane Doe" /></div>
+        <div class="field"><label for="email" data-i18n="fEmail"></label><input id="email" type="email" placeholder="jane@example.com" /></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="phone" data-i18n="fPhone"></label><input id="phone" type="tel" placeholder="+33 6 12 34 56 78" /></div>
+        <div class="field"><label for="country" data-i18n="fCountry"></label><input id="country" type="text" placeholder="France" /></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="occupation" data-i18n="fOccupation"></label><input id="occupation" type="text" placeholder="Software engineer at Acme" /></div>
+        <div class="field"><label for="income" data-i18n="fIncome"></label><input id="income" type="text" placeholder="$100,000/year" /></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="guarantor" data-i18n="fGuarantor"></label><input id="guarantor" type="text" placeholder="Insurent or TheGuarantors" /></div>
+        <div class="field"><label for="movein" data-i18n="fMovein"></label><input id="movein" type="text" data-i18n-placeholder="phMovein" /></div>
+      </div>
+      <div>
+        <label for="extra" data-i18n="fExtra"></label>
+        <input id="extra" type="text" data-i18n-placeholder="phExtra" />
+      </div>
+    </section>
+
+    <!-- ================= criteres ================= -->
+    <section class="card stack">
+      <div>
+        <h2 data-i18n="secCriteria"></h2>
+        <p class="hint" data-i18n="optHintCriteria"></p>
+      </div>
+      <div class="row">
+        <div class="field"><label for="maxRent" data-i18n="fMaxRent"></label><input id="maxRent" type="number" min="0" step="50" /></div>
+        <div class="field"><label for="minBeds" data-i18n="fMinBeds"></label><input id="minBeds" type="number" min="0" step="1" /></div>
+      </div>
+      <fieldset>
+        <legend data-i18n="legendGuarantors"></legend>
+        <label class="chk"><input type="checkbox" id="st_covered" /> <span class="dot dot-ok"></span> <span data-i18n="stCovered"></span></label>
+        <label class="chk"><input type="checkbox" id="st_maybe" /> <span class="dot dot-warn"></span> <span data-i18n="stMaybe"></span></label>
+        <label class="chk"><input type="checkbox" id="st_not_listed" /> <span class="dot dot-no"></span> <span data-i18n="stNotListed"></span></label>
+        <label class="chk"><input type="checkbox" id="st_error" /> <span class="dot dot-unknown"></span> <span data-i18n="stError"></span></label>
+        <label class="chk"><input type="checkbox" id="acceptTg" /> <span data-i18n="cbAcceptTg"></span></label>
+        <label class="chk"><input type="checkbox" id="skipContacted" /> <span data-i18n="cbSkipContacted"></span></label>
+      </fieldset>
+    </section>
+
+    <!-- ================= panneau de visite ================= -->
+    <section class="card stack">
+      <div>
+        <h2 data-i18n="secTour"></h2>
+        <p class="hint" data-i18n="optHintTour"></p>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="tourType" data-i18n="fTourType"></label>
+          <select id="tourType">
+            <option value="video" data-i18n="optTourVideo"></option>
+            <option value="in_person" data-i18n="optTourInPerson"></option>
+            <option value="none" data-i18n="optTourNone"></option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="slots" data-i18n="fSlots"></label>
+          <select id="slots">
+            <option value="0" data-i18n="optSlotsNone"></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="minDate" data-i18n="fMinDate"></label><input id="minDate" type="date" /></div>
+        <div class="field">
+          <label for="tzMode" data-i18n="fTzMode"></label>
+          <select id="tzMode">
+            <option value="local" data-i18n="optTzLocal"></option>
+            <option value="ny" data-i18n="optTzNy"></option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label data-i18n="fAvailability"></label>
+        <table id="availGrid">
+          <thead>
+            <tr>
+              <th></th>
+              <th data-i18n="thMorning"></th>
+              <th data-i18n="thAfternoon"></th>
+              <th data-i18n="thEvening"></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="hint" id="tzHint" style="margin-top:8px"></p>
+      </div>
+
+      <div class="row">
+        <div class="field"><label for="t_morning" data-i18n="fTimeMorning"></label><input id="t_morning" type="time" /></div>
+        <div class="field"><label for="t_afternoon" data-i18n="fTimeAfternoon"></label><input id="t_afternoon" type="time" /></div>
+        <div class="field"><label for="t_evening" data-i18n="fTimeEvening"></label><input id="t_evening" type="time" /></div>
+      </div>
+
+      <label class="chk"><input type="checkbox" id="addMessage" /> <span data-i18n="cbAddMessage"></span></label>
+
+      <div class="row">
+        <div class="field">
+          <label for="sendMode" data-i18n="fSendMode"></label>
+          <select id="sendMode">
+            <option value="manual" data-i18n="optSendManual"></option>
+            <option value="auto" data-i18n="optSendAuto"></option>
+          </select>
+        </div>
+        <div class="field"><label for="autoDelay" data-i18n="fAutoDelay"></label><input id="autoDelay" type="number" min="5" max="600" step="5" /></div>
+      </div>
+      <p class="hint" data-i18n="optHintAuto"></p>
+
+      <label class="chk"><input type="checkbox" id="safeMode" /> <span data-i18n="cbSafeMode"></span></label>
+      <p class="hint" data-i18n="optHintSafe"></p>
+    </section>
+
+    <!-- ================= message ================= -->
+    <section class="card stack">
+      <div>
+        <h2 data-i18n="secMessage"></h2>
+        <p class="hint">
+          <span data-i18n="hintPhListing"></span>
+          <code>{{address}}</code> <code>{{price}}</code> <code>{{price_sentence}}</code>
+          <code>{{beds}}</code> <code>{{url}}</code><br />
+          <span data-i18n="hintPhProfile"></span>
+          <code>{{name}}</code> <code>{{email}}</code> <code>{{phone}}</code>
+          <code>{{country}}</code> <code>{{occupation}}</code> <code>{{income}}</code>
+          <code>{{guarantor}}</code> <code>{{movein}}</code> <code>{{extra}}</code><br />
+          <span data-i18n="hintPhClauses"></span>
+          <code>{{based_clause}}</code> <code>{{occupation_clause}}</code>
+          <code>{{income_clause}}</code> <code>{{contact_line}}</code>
+        </p>
+      </div>
+      <textarea id="template"></textarea>
+    </section>
+
+    <!-- ================= apercu ================= -->
+    <section class="card stack">
+      <h2 data-i18n="secPreview"></h2>
+      <pre id="preview"></pre>
+    </section>
+  </div>
+
+  <div class="bar">
+    <div class="bar-inner">
+      <button id="save" data-i18n="btnSave"></button>
+      <button id="reset" class="sec" data-i18n="btnResetTemplate"></button>
+      <button id="resetTour" class="sec" data-i18n="btnResetTour"></button>
+      <button id="clearSent" class="sec" data-i18n="btnClearSent"></button>
+      <span id="status"></span>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

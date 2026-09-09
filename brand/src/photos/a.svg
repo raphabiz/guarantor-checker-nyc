@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 362 200" preserveAspectRatio="xMidYMid slice">
+  <!-- sejour, lumiere de fin d'apres-midi -->
+  <defs>
+    <linearGradient id="wA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4EFE8"/><stop offset="1" stop-color="#E3D9CC"/></linearGradient>
+    <linearGradient id="sA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DFEDF4"/><stop offset="1" stop-color="#B7D3E3"/></linearGradient>
+    <linearGradient id="fA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D6B994"/><stop offset="1" stop-color="#BC9C75"/></linearGradient>
+  </defs>
+  <rect width="362" height="200" fill="url(#wA)"/>
+  <path d="M206 30 L322 30 L362 200 L128 200 Z" fill="#ffffff" opacity=".3"/>
+  <rect y="150" width="362" height="50" fill="url(#fA)"/>
+  <ellipse cx="118" cy="172" rx="104" ry="15" fill="#EBE2D5" opacity=".7"/>
+  <rect x="206" y="34" width="112" height="98" rx="2" fill="url(#sA)"/>
+  <g fill="#FCFAF7"><rect x="259" y="34" width="6" height="98"/><rect x="206" y="78" width="112" height="6"/></g>
+  <rect x="202" y="30" width="120" height="106" rx="3" fill="none" stroke="#FCFAF7" stroke-width="7"/>
+  <g>
+    <rect x="36" y="140" width="9" height="12" rx="2" fill="#8C9891"/>
+    <rect x="149" y="140" width="9" height="12" rx="2" fill="#8C9891"/>
+    <rect x="32" y="104" width="130" height="26" rx="9" fill="#98A69E"/>
+    <rect x="28" y="118" width="138" height="26" rx="9" fill="#AEBAB2"/>
+    <rect x="44" y="110" width="34" height="16" rx="6" fill="#C3CCC5"/>
+  </g>
+  <g><path d="M330 158 h24 l-4 30 h-16 z" fill="#C08A63"/>
+     <path d="M342 158 C342 134 330 126 325 122 C337 124 345 134 345 148 C348 132 358 124 362 121 C353 130 345 138 345 158 Z" fill="#5F9276"/></g>
+  <rect x="96" y="42" width="52" height="40" rx="3" fill="#DCD2C4" stroke="#FCFAF7" stroke-width="5"/>
+</svg>
