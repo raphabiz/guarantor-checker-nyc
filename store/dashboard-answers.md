@@ -19,8 +19,8 @@ dans laquelle l'examen est fait. Les commentaires autour sont pour toi.
 | Image promotionnelle en haut de page | [`promo-marquee-1400x560.png`](promo-marquee-1400x560.png) |
 | Vidéo promotionnelle | laisser vide |
 | URL officielle | `Aucune` |
-| URL de la page d'accueil | `https://github.com/<toi>/guarantor-checker-nyc` |
-| URL de l'assistance | `https://github.com/<toi>/guarantor-checker-nyc/issues` |
+| URL de la page d'accueil | `https://github.com/raphabiz/guarantor-checker-nyc` |
+| URL de l'assistance | `https://github.com/raphabiz/guarantor-checker-nyc/issues` |
 | Contenu réservé aux adultes | Non |
 
 ---
@@ -91,7 +91,7 @@ et rien n'est utilisé pour évaluer une solvabilité.
 
 ### URL de la politique de confidentialité
 
-`https://github.com/<toi>/guarantor-checker-nyc/blob/main/PRIVACY.md`
+`https://github.com/raphabiz/guarantor-checker-nyc/blob/main/PRIVACY.md`
 
 ---
 
@@ -111,7 +111,7 @@ peut s'y arrêter. La réponse tient en une phrase, à garder sous la main : l'e
 ## Avant de cliquer sur « Envoyer »
 
 - [ ] `node pack.mjs`, et déposer `dist/guarantor-checker-<version>.zip`
-- [ ] Le dépôt GitHub est public, `PRIVACY.md` accessible à l'URL déclarée
+- [x] Dépôt public créé, `PRIVACY.md` accessible à l'URL déclarée
 - [x] `LICENSE` : titulaire du copyright = MONEPOK
 - [x] `PRIVACY.md` : adresse de contact renseignée (raph@monepok.com)
 - [x] Clé d'API TheGuarantors : décision prise, on la garde en clair. Risque assumé et
