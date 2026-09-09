@@ -27,71 +27,74 @@ dans laquelle l'examen est fait. Les commentaires autour sont pour toi.
 
 ## Onglet « Confidentialité »
 
-### Objectif unique (single purpose)
+Le formulaire ne prévoit **qu'un seul champ pour toutes les autorisations d'hôte**, pas un par
+domaine. Les trois justifications sont donc fusionnées ci-dessous. Chaque champ est limité à
+1 000 caractères ; les longueurs sont indiquées.
 
-> Guarantor Checker adds a badge to rental listings on streeteasy.com showing whether the
-> building is on the list of buildings that Insurent or TheGuarantors publicly state they cover.
-> That is its only function. It reads the address printed on a listing, compares it with those
-> two public lists, and displays the result together with the reasoning behind it. It does not
-> contact agents, fill in forms, submit anything, rank listings, or alter any other website.
+### Description de l'objectif unique — 556/1000
 
-### Justification de la permission `storage`
+```
+Guarantor Checker adds a badge to rental listings on streeteasy.com showing whether the building is on the list of buildings that Insurent or TheGuarantors publicly state they cover.
 
-> The extension caches TheGuarantors' public list of covered buildings in `chrome.storage.local`
-> and refreshes it once every 24 hours. Without it, that list would be downloaded again on every
-> results page the user opens. No user data is ever written to storage: the cache holds only
-> public reference data published by TheGuarantors, plus the timestamp of the last download.
+That is its only function. It reads the address printed on a listing, compares it with those two public lists, and displays the verdict together with the reasoning behind it: the address it read, the query it sent, what came back, and the source.
 
-### Justification de l'accès à `streeteasy.com`
+It does not contact agents, fill in or submit forms, rank or hide listings, or modify any website other than streeteasy.com.
+```
 
-> The content script runs on rental listings on streeteasy.com to read the building address
-> printed on the listing and insert the guarantor badge next to it. This is the only site whose
-> pages the extension reads or modifies.
+### Justification de l'autorisation `storage` — 546/1000
 
-### Justification de l'accès à `insurent.com`
+```
+The extension caches TheGuarantors' public list of covered buildings in chrome.storage.local and refreshes it once every 24 hours. Without that cache the list would be downloaded again on every results page the user opens, which is wasteful for the user and the worst possible signal to send to that endpoint.
 
-> The service worker queries Insurent's public certified-building search, the same endpoint that
-> powers the address field on their own website, to check whether the listed building is
-> certified. A page cannot make this cross-origin request itself, which is why the host
-> permission is required. The request carries only a building address and is sent without
-> credentials.
+No user data is ever written to storage. The cache holds only public reference data published by TheGuarantors, plus the timestamp of the last download. Insurent results are kept in memory in the service worker and are never persisted.
+```
 
-### Justification de l'accès à `theguarantors.com`
+### Justification de l'autorisation d'accès à l'hôte — 838/1000
 
-> The service worker downloads TheGuarantors' public list of the buildings they cover in New
-> York and New Jersey, and compares the listing address against it. The list is cached locally
-> for 24 hours. The request carries no user data and is sent without credentials.
+```
+Three hosts: one where the badge is shown, two that are asked the question.
 
-### Code distant (remote code)
+streeteasy.com: the content script reads the building address printed on a rental listing and inserts the guarantor badge next to it. This is the only site whose pages the extension reads or modifies.
 
-> **No, I am not using remote code.**
+insurent.com: the service worker queries Insurent's public certified-building search, the same endpoint that powers the address field on their own website, to check whether the listed building is certified.
 
-Tout ce qui s'exécute est dans le paquet. Les appels réseau ne ramènent que des données JSON,
-jamais du code.
+theguarantors.com: the service worker downloads TheGuarantors' public list of the buildings they cover in New York and New Jersey, and compares the listing address against it.
 
-### Utilisation des données
+Both outgoing requests carry only a building address and are sent without cookies or credentials. They run in the service worker because a page cannot make them cross-origin.
+```
 
-Coche **Website content**, et rien d'autre.
+Le formulaire prévient qu'une autorisation d'hôte déclenche un examen approfondi et retarde la
+publication. C'est normal et inévitable ici : sans accès à streeteasy.com l'extension n'a nulle
+part où poser son badge, et sans les deux autres elle n'a rien à vérifier.
 
-> The only thing transmitted off the device is the building address printed on the listing the
-> user is currently viewing. It is sent to Insurent and to TheGuarantors so that they can answer
-> whether they cover that building, which is the sole purpose of the extension. No name, email,
-> account identifier, IP-linked profile, or browsing history is attached, and the requests are
-> made without cookies or credentials. Nothing is stored on any server operated by this
-> extension, because there is none.
+### Code distant
 
-Laisse décochées : informations personnelles, données de santé, données financières,
-authentification, communications personnelles, position, historique de navigation, activité
-utilisateur.
+Sélectionner **« Non, je n'utilise pas Code distant »**. Si le champ Justification reste
+obligatoire — 204/1000 :
+
+```
+All executable code ships inside the extension package. Network requests return JSON data, which is parsed and never evaluated. There is no eval(), no external <script> tag, and no remotely hosted module.
+```
+
+### Consommation des données
+
+Cocher **Contenu du site Web**, et rien d'autre.
+
+Les huit autres cases restent vides. En particulier **Historique Web** : l'extension ne
+transmet ni URL, ni titre de page, ni heure de visite, seulement une chaîne d'adresse postale.
+
+Ce formulaire n'a pas de champ de texte libre. L'explication vit dans `PRIVACY.md`, qui est
+déjà rédigé dans ce sens.
 
 ### Les trois attestations
 
-Coche les trois. Aucune donnée n'est vendue, transférée, ni utilisée hors de l'objectif unique,
-et rien n'est utilisé pour évaluer une solvabilité.
+Cocher les trois.
 
-### URL de la politique de confidentialité
+### URL des règles de confidentialité
 
-`https://github.com/raphabiz/guarantor-checker-nyc/blob/main/PRIVACY.md`
+```
+https://github.com/raphabiz/guarantor-checker-nyc/blob/main/PRIVACY.md
+```
 
 ---
 
